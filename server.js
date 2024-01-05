@@ -1,8 +1,16 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const fs = require('fs');
+
+
+// server.js 或其他后端文件
+const mailgun = require("mailgun-js");
+const DOMAIN = 'sandbox6a25717971e3492790175b035f11dd1a.mailgun.org'; // 你的Mailgun域名
+const mg = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN});
+
 
 const app = express();
 app.use(cors());
@@ -28,7 +36,7 @@ app.use((req, res, next) => {
 
 
 app.use("/", router);
-require('dotenv').config();
+
 
 console.log(process.env.EMAIL_USER);
 console.log(process.env.EMAIL_PASS);
@@ -63,12 +71,19 @@ router.post("/contact", (req, res) => {
             <p>Message: ${message}</p>`,
   };
 
-  contactEmail.sendMail(mail,(error) => {
-    if(error){
-        res.json(error);
-    }else{
-        res.json({code: 200, status: "Message Sent"})
+  // contactEmail.sendMail(mail,(error) => {
+  //   if(error){
+  //       res.json(error);
+  //   }else{
+  //       res.json({code: 200, status: "Message Sent"})
+  //   }
+  // });
+  mg.messages().send(data, function (error, body) {
+    console.log(body);
+    if (error) {
+      return res.status(500).send({ message: error.message });
     }
+    res.send({ message: "Email sent successfully" });
   });
 });
 
