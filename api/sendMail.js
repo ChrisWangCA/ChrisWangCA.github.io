@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 module.exports = async (req, res) => {
     // 设置CORS头部
-    res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method !== 'POST') {
