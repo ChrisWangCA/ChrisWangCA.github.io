@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 module.exports = async (req, res) => {
     // 设置CORS头部
-  res.setHeader('Access-Control-Allow-Origin', 'https://chris-wang-ca-github-doesd8ipi-chriswangcas-projects.vercel.app'); // 或者指定你的前端域名
+    res.setHeader('Access-Control-Allow-Origin', 'https://chris-wang-ca-github-fsj595p9t-chriswangcas-projects.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method !== 'POST') {
