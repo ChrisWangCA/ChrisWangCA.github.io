@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
+import emailjs from 'emailjs-com';
 
 export const Contact = () => {
     const formInitialDetails = {
@@ -23,36 +24,42 @@ export const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
-        try{
-            let response = await fetch("https://chris-wang-ca-github-npxaz1po1-chriswangcas-projects.vercel.app/api/sendMail",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "Application/json;charset=utf-8",
-                },
-                body: JSON.stringify(formDetails),
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            let result = await response.json();
+        
+        try {
+            // 发送邮件
+            const result = await emailjs.send('service_s0pqahk', 'template_b0al3pe', formDetails, 'QI7MlK3u_kQ_4DKh_');
+            console.log(result.text);
+            setStatus({ success: true, message: 'Message sent successfully' });
             setFormDetails(formInitialDetails);
-            console.log("CODE CODE CODE IS:",result);
-            console.log("CODE CODE CODE IS:",result);
-            console.log("CODE CODE CODE IS:",result);
-            console.log("CODE CODE CODE IS:",result);
-            console.log("CODE CODE CODE IS:",result);
-
-            if(result.code === 200) {
-                setStatus({success: true, message: 'Message sent successfully'});
-            }else{
-                setStatus({success: false, message: "Something went wrong, please try again later"})
-            }
-        }catch(error) {
-            console.error("There was an error!", error);
-            setStatus({success: false, message: "Failed to send message. Please try again later."});
+        } catch (error) {
+            console.error('Failed to send message:', error);
+            setStatus({ success: false, message: "Failed to send message. Please try again later." });
         }
+        // try{
+        //     let response = await fetch("https://chris-wang-ca-github-npxaz1po1-chriswangcas-projects.vercel.app/api/sendMail",{
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "Application/json;charset=utf-8",
+        //         },
+        //         body: JSON.stringify(formDetails),
+        //     });
+
+        //     if (!response.ok) {
+        //         throw new Error(`HTTP error! status: ${response.status}`);
+        //     }
+
+        //     let result = await response.json();
+        //     setFormDetails(formInitialDetails);
+
+        //     if(result.code === 200) {
+        //         setStatus({success: true, message: 'Message sent successfully'});
+        //     }else{
+        //         setStatus({success: false, message: "Something went wrong, please try again later"})
+        //     }
+        // }catch(error) {
+        //     console.error("There was an error!", error);
+        //     setStatus({success: false, message: "Failed to send message. Please try again later."});
+        // }
         setButtonText("Send");
     };
     return (
