@@ -24,7 +24,7 @@ export const Contact = () => {
         e.preventDefault();
         setButtonText('Sending...');
         try{
-            let response = await fetch("https://chris-wang-ca-github-io.vercel.app/api/sendMail",{
+            let response = await fetch("https://master--jade-semolina-31182b.netlify.app/api/sendMail",{
                 method: "POST",
                 headers: {
                     "Content-Type": "Application/json;charset=utf-8",
