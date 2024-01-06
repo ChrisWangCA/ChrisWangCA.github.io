@@ -38,6 +38,11 @@ export const Contact = () => {
 
             let result = await response.json();
             setFormDetails(formInitialDetails);
+            console.log("CODE CODE CODE IS:",result);
+            console.log("CODE CODE CODE IS:",result);
+            console.log("CODE CODE CODE IS:",result);
+            console.log("CODE CODE CODE IS:",result);
+            console.log("CODE CODE CODE IS:",result);
 
             if(result.code === 200) {
                 setStatus({success: true, message: 'Message sent successfully'});
