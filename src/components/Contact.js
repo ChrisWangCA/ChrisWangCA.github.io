@@ -35,31 +35,7 @@ export const Contact = () => {
             console.error('Failed to send message:', error);
             setStatus({ success: false, message: "Failed to send message. Please try again later." });
         }
-        // try{
-        //     let response = await fetch("https://chris-wang-ca-github-npxaz1po1-chriswangcas-projects.vercel.app/api/sendMail",{
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "Application/json;charset=utf-8",
-        //         },
-        //         body: JSON.stringify(formDetails),
-        //     });
-
-        //     if (!response.ok) {
-        //         throw new Error(`HTTP error! status: ${response.status}`);
-        //     }
-
-        //     let result = await response.json();
-        //     setFormDetails(formInitialDetails);
-
-        //     if(result.code === 200) {
-        //         setStatus({success: true, message: 'Message sent successfully'});
-        //     }else{
-        //         setStatus({success: false, message: "Something went wrong, please try again later"})
-        //     }
-        // }catch(error) {
-        //     console.error("There was an error!", error);
-        //     setStatus({success: false, message: "Failed to send message. Please try again later."});
-        // }
+     
         setButtonText("Send");
     };
     return (
