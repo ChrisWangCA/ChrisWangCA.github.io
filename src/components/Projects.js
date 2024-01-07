@@ -22,7 +22,7 @@ export const Projects = () => {
         },
         {
           title: "Food Ordering System",
-          description: "Java & SpringCloud & Kafka",
+          description: "Java & Vue",
           imgUrl: foodOrderingSystem,
           github:'https://github.com/ChrisWangCA/Online-Ordering-System'
         },
