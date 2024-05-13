@@ -21,10 +21,10 @@ export const Projects = () => {
           github: 'https://github.com/ChrisWangCA/yelpcamp'
         },
         {
-          title: "Food Ordering System",
-          description: "Java & Vue",
-          imgUrl: foodOrderingSystem,
-          github:'https://github.com/ChrisWangCA/Online-Ordering-System'
+          title: "BuzzBid",
+          description: "C# & ASP.NET",
+          imgUrl: buzzbid,
+          github:'https://github.com/ChrisWangCA/BuzzBid'
         },
         {
           title: "Advertising Search System",
