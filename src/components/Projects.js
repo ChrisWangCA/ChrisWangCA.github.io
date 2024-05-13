@@ -9,6 +9,7 @@ import yelpcamp from "../assets/img/yelpcamp.png"
 import tetris from "../assets/img/tetris.png"
 import movieDatabase from "../assets/img/movieDatabase.png"
 import leetcode from "../assets/img/leetcode.png"
+import buzzbid from "../assets/img/buzzbid.png"
 import "animate.css"
 
 
